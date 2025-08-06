@@ -31,23 +31,20 @@
 ### 项目结构
 
 ```
-outline-plugin/
+orca-mindmap-plugin/
 ├── src/
-│   ├── main.ts              # 插件主入口
-│   ├── types.ts             # 类型定义
-│   ├── components/
-│   │   └── MindMap.ts       # 思维导图渲染器
-│   ├── utils/
-│   │   └── helpers.ts       # 工具函数
-│   ├── styles/
-│   │   └── main.css         # 样式文件
-│   └── __tests__/           # 测试文件
+│   ├── orca-mindmap-local.ts    # 主插件文件
+│   ├── types.ts                 # TypeScript类型定义
+│   └── utils/
+│       └── helpers.ts           # 工具函数
 ├── dist/
-│   ├── index.js             # 编译后的主文件
-│   └── style.css            # 编译后的样式
-├── icon.png                 # 插件图标
-├── package.json             # 项目配置
-└── README.md                # 说明文档
+│   ├── index.js                 # 编译后的主文件
+│   └── index.js.map             # Source Map文件
+├── icon.png                     # 插件图标
+├── package.json                 # 项目配置
+├── tsconfig.json                # TypeScript配置
+├── vite.config.js               # 构建配置
+└── README.md                    # 说明文档
 ```
 
 ### 构建命令
@@ -61,9 +58,6 @@ npm run dev
 
 # 构建生产版本
 npm run build
-
-# 运行测试
-npm test
 
 # 清理构建文件
 npm run clean
