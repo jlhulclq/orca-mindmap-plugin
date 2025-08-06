@@ -1,0 +1,38 @@
+{
+  "name": "outline-plugin",
+  "version": "4.0.0",
+  "description": "虎鲸笔记页面思维导图插件",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc && vite build",
+    "dev": "vite build --watch --mode development",
+    "clean": "rm -rf dist release",
+    "test": "jest",
+    "package": "npm run build && node scripts/package.js",
+    "create-package": "node scripts/package.js"
+  },
+  "dependencies": {
+    "d3": "^7.9.0",
+    "markmap-common": "^0.14.2",
+    "markmap-lib": "^0.14.3",
+    "markmap-view": "^0.14.3"
+  },
+  "devDependencies": {
+    "@types/d3": "^7.4.0",
+    "@types/node": "^18.0.0",
+    "jest": "^29.6.2",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.0.4",
+    "vite": "^4.4.9"
+  },
+  "orca": {
+    "displayName": "页面思维导图",
+    "icon": "icon.png",
+    "minAppVersion": "1.5.0",
+    "permissions": [
+      "read-blocks",
+      "write-ui",
+      "store-data"
+    ]
+  }
+}

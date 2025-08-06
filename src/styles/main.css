@@ -1,0 +1,230 @@
+/* 虎鲸笔记大纲插件样式 */
+
+.mindmap-container {
+  padding: 20px;
+  font-family: var(--orca-font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.mindmap-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--orca-color-border, #e0e0e0);
+}
+
+.mindmap-title {
+  margin: 0;
+  color: var(--orca-color-text-1, #333);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.mindmap-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.mindmap-btn {
+  background-color: var(--orca-color-primary, #007acc);
+  color: var(--orca-color-primary-text, white);
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.mindmap-btn:hover {
+  background-color: var(--orca-color-primary-hover, #005a9e);
+  transform: translateY(-1px);
+}
+
+.mindmap-btn:active {
+  transform: translateY(0);
+}
+
+.mindmap-content {
+  flex: 1;
+  border: 1px solid var(--orca-color-border, #e0e0e0);
+  border-radius: 8px;
+  padding: 15px;
+  background: var(--orca-color-bg-2, #fafafa);
+  max-height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: all 0.3s ease;
+}
+
+.mindmap-content.collapsed {
+  max-height: 100px;
+  overflow: hidden;
+}
+
+.mindmap-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.mindmap-content::-webkit-scrollbar-track {
+  background: var(--orca-color-bg-1, #fff);
+  border-radius: 3px;
+}
+
+.mindmap-content::-webkit-scrollbar-thumb {
+  background: var(--orca-color-border, #e0e0e0);
+  border-radius: 3px;
+}
+
+.mindmap-content::-webkit-scrollbar-thumb:hover {
+  background: var(--orca-color-text-3, #999);
+}
+
+.mindmap-node {
+  cursor: pointer;
+  padding: 3px 6px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  line-height: 1.4;
+  position: relative;
+  user-select: none;
+}
+
+.mindmap-node:hover {
+  background-color: var(--orca-color-primary-light, rgba(0, 122, 204, 0.1));
+  transform: translateX(4px);
+}
+
+.mindmap-node.hover {
+  background-color: var(--orca-color-primary-light, rgba(0, 122, 204, 0.15));
+}
+
+.mindmap-node.collapsed::before {
+  content: "▶";
+  position: absolute;
+  left: -15px;
+  color: var(--orca-color-primary, #007acc);
+  font-size: 10px;
+}
+
+.mindmap-node[data-level="0"] {
+  font-weight: 600;
+  color: var(--orca-color-text-1, #333) !important;
+  border-left: 4px solid var(--orca-color-primary, #007acc);
+  padding-left: 12px;
+  margin: 8px 0;
+}
+
+.mindmap-node[data-level="1"] {
+  font-weight: 500;
+  margin-left: 16px;
+  color: var(--orca-color-text-2, #666) !important;
+}
+
+.mindmap-node[data-level="2"] {
+  margin-left: 32px;
+  color: var(--orca-color-text-3, #888) !important;
+}
+
+.mindmap-node[data-level="3"] {
+  margin-left: 48px;
+  color: var(--orca-color-text-3, #999) !important;
+  font-size: 13px !important;
+}
+
+.mindmap-node[data-level="4"] {
+  margin-left: 64px;
+  color: var(--orca-color-text-3, #aaa) !important;
+  font-size: 12px !important;
+}
+
+.mindmap-footer {
+  margin-top: 15px;
+  padding-top: 10px;
+  font-size: 12px;
+  color: var(--orca-color-text-3, #999);
+  text-align: center;
+  border-top: 1px solid var(--orca-color-border, #e0e0e0);
+}
+
+/* 暗色主题适配 */
+@media (prefers-color-scheme: dark) {
+  .mindmap-container {
+    background: var(--orca-color-bg-1, #1e1e1e);
+  }
+  
+  .mindmap-content {
+    background: var(--orca-color-bg-2, #2d2d2d);
+    border-color: var(--orca-color-border, #404040);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .mindmap-node:hover {
+    background-color: rgba(0, 122, 204, 0.2);
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .mindmap-container {
+    padding: 12px;
+  }
+  
+  .mindmap-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .mindmap-title {
+    font-size: 16px;
+  }
+  
+  .mindmap-btn {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mindmap-container {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* 加载状态 */
+.mindmap-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  color: var(--orca-color-text-3, #999);
+}
+
+.mindmap-loading::after {
+  content: "正在加载...";
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
